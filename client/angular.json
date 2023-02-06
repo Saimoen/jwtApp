@@ -8,13 +8,16 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss",
-          "skipTest": true
+          "skipTests": true
         },
         "@schematics/angular:guard": {
-          "skipTest": true
+          "skipTests": true
         },
         "@schematics/angular:service": {
-          "skipTest": true
+          "skipTests": true
+        },
+        "@schematics/angular:application": {
+          "strict": true
         }
       },
       "root": "",
@@ -31,7 +34,10 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -63,6 +69,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "src/proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "client:build:production"
@@ -86,7 +95,10 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss"
+            ],
             "scripts": []
           }
         }
